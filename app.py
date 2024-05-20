@@ -93,7 +93,7 @@ def instance_name():
     return jsonify({'instance_name': instance_name})
     
     
-@app.route('/api/version', methods=['GET'])
+@app.route('/api/back_version', methods=['GET'])
 def version():
     return jsonify({'version': VERSION})
 
