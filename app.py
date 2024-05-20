@@ -9,6 +9,8 @@ app = Flask(__name__)
 CORS(app)
 load_dotenv()
 
+VERSION = "1.1"
+
 DB_ENDPOINT = os.getenv("DB_ENDPOINT", "grpc://ydb.serverless.yandexcloud.net:2135")
 DB_PATH = os.getenv("DB_PATH", "/ru-central1/b1gXXXXXXXXXX/etnXXXXXXXXXX")
 CREDENTIALS_FILE = os.getenv("CREDENTIALS_FILE", "/path/to/credentials.json")
@@ -89,6 +91,11 @@ def post_entry():
 def instance_name():
     instance_name = get_instance_name()
     return jsonify({'instance_name': instance_name})
+    
+    
+@app.route('/api/version', methods=['GET'])
+def version():
+    return jsonify({'version': VERSION})
 
 
 if __name__ == '__main__':
